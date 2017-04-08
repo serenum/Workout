@@ -1,16 +1,35 @@
 package com.serenum.android.workout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements WorkoutListFragment.WorkoutListListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-        WorkoutDetailFragment detailFragment = (WorkoutDetailFragment)getSupportFragmentManager().findFragmentById(R.id.detail_fragment);
-        detailFragment.setWorkoutID(1);
+    @Override
+    public void itemClicked(long id) {
+        View landscape = findViewById(R.id.fragment_container);
+        if (landscape != null) {
+            WorkoutDetailFragment details = new WorkoutDetailFragment();
+            details.setWorkoutID(id);
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, details);
+            transaction.addToBackStack(null);
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            transaction.commit();
+        } else {
+            Intent intent = new Intent(this, DetailActivity.class);
+            intent.putExtra(DetailActivity.EXTRA_WORKOUT_ID, id);
+            startActivity(intent);
+        }
+
     }
 }
