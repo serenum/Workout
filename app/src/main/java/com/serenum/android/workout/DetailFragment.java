@@ -2,6 +2,7 @@ package com.serenum.android.workout;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,16 @@ public class DetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if(savedInstanceState != null)
+        if(savedInstanceState != null) {
             this.workoutID = savedInstanceState.getLong("id");
+        } else {
+            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+            StopwatchFragment stopwatch = new StopwatchFragment();
+            transaction.replace(R.id.stopwatch_container, stopwatch);
+            transaction.addToBackStack(null);
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            transaction.commit();
+        }
         return inflater.inflate(R.layout.detail_fragment, container, false);
     }
 

@@ -1,6 +1,6 @@
 package com.serenum.android.workout;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import android.widget.TextView;
  * Created by Serenum on 08.04.2017.
  */
 
-public class StopWatchFragment extends Fragment {
+public class StopwatchFragment extends Fragment {
 
     private int seconds;
     private boolean running;
@@ -34,9 +34,9 @@ public class StopWatchFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.stopwatch_fragment_layout, container, false);
+        View view = inflater.inflate(R.layout.stopwatch_fragment, container, false);
 
-        Button start = (Button) layout.findViewById(R.id.start_button);
+        Button start = (Button) view.findViewById(R.id.start_button);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +44,7 @@ public class StopWatchFragment extends Fragment {
             }
         });
 
-        Button stop = (Button) layout.findViewById(R.id.stop_button);
+        Button stop = (Button) view.findViewById(R.id.stop_button);
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,7 +52,7 @@ public class StopWatchFragment extends Fragment {
             }
         });
 
-        Button reset = (Button) layout.findViewById(R.id.reset_button);
+        Button reset = (Button) view.findViewById(R.id.reset_button);
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,8 +61,8 @@ public class StopWatchFragment extends Fragment {
             }
         });
 
-        runTimer(layout);
-        return layout;
+        runTimer(view);
+        return view;
     }
 
     private void runTimer(View view) {

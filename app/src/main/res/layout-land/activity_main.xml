@@ -10,7 +10,7 @@
 
     <fragment
         android:id="@+id/list_fragment"
-        class="com.serenum.android.workout.WorkoutListFragment"
+        class="com.serenum.android.workout.ExercisesFragment"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent" />
@@ -18,13 +18,6 @@
     <FrameLayout
         android:id="@+id/fragment_container"
         android:paddingLeft="20dp"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent" />
-
-    <fragment
-        android:id="@+id/stopwatch_fragment_layout"
-        class="com.serenum.android.workout.StopWatchFragment"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent" />

@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity implements WorkoutListFragment.WorkoutListListener {
+public class MainActivity extends AppCompatActivity implements ExercisesFragment.WorkoutListListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements WorkoutListFragme
     public void itemClicked(long id) {
         View landscape = findViewById(R.id.fragment_container);
         if (landscape != null) {
-            WorkoutDetailFragment details = new WorkoutDetailFragment();
+            DetailFragment details = new DetailFragment();
             details.setWorkoutID(id);
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, details);

@@ -14,10 +14,10 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedOnInstanceState) {
         super.onCreate(savedOnInstanceState);
-        setContentView(R.layout.detail_layout);
-        WorkoutDetailFragment detailFragment =
-                (WorkoutDetailFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.detail_fragment);
+        setContentView(R.layout.detail_container);
+        DetailFragment detailFragment =
+                (DetailFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.detail_container);
         long workoutID = (Long) getIntent().getExtras().get(DetailActivity.EXTRA_WORKOUT_ID);
         detailFragment.setWorkoutID(workoutID);
     }
